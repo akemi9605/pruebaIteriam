@@ -1,0 +1,30 @@
+<div class="infinite-scroll" infiniteScroll [infiniteScrollDistance]="2"  (scrolled)="onScroll()">
+    <header class="infinite-scroll-header">
+        <h1 style="text-align: center">INFINITE SCROLL EXAMPLE</h1>
+        <div>
+            <input id="radio-id" type="radio" value="id" name="selectedSearch" [(ngModel)]="selectedSearch"> Search by ID
+            <input id="radio-text" type="radio" value="text" name="selectedSearch" [(ngModel)]="selectedSearch"> Search By Text
+            <br />
+            <input id="input-search" [(ngModel)]="searchInput" type="text" placeholder="Search">
+            <button id="button-search" (click)="onSearch()">SEARCH</button>
+
+            <button id="button-reset" (click)="onReset()">Reset Filters</button>
+        </div>
+    </header>
+    <table class="infinite-scroll-table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col"><strong>URL</strong></th>
+            <th scope="col"><strong>Text</strong></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="row" *ngFor="let photo of photos;">
+            <td scope="row">{{photo.id}}</td>
+            <td scope="row"><img loading="lazy" width="50" height="50" [src]="photo.photo" [alt]="photo.text"></td>
+            <td scope="row">{{photo.text}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
